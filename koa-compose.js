@@ -51,5 +51,5 @@ app.compose = function() {
 
 //新版 redux
 app.compose = function() {
-  return app.middlewares.reduceRight((r, fn) => (arg) => r(fn()))
+  return app.middlewares.reduceRight((r, fn) => (arg) => r(() => fn(arg)))(() => {})
 }
