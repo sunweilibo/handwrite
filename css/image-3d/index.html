@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    img {
+      transform: perspective(400px) rotate3d(1, -1, 0, calc(var(--i,1) * 8deg));
+      -webkit-mask: linear-gradient(135deg, #000c 40%, #000, #000c 60%) 100% 100%/240% 240%; /* 宽 高 */
+      transition: 0.4s;
+      cursor: pointer;
+    }
+    img:hover {
+      --i: -1;
+      -webkit-mask-position: 0 0;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <img src="https://picsum.photos/id/58/300/300" alt="a lighthouse">
+    <img src="https://picsum.photos/id/61/300/300" class="alt" alt="an old city">
+  </div>
+</body>
+</html>
+<!-- 参考文档：https://mp.weixin.qq.com/s?__biz=Mzg4MTYwMzY1Mw==&mid=2247508412&idx=1&sn=879559176b77ea08dcc9fa1f1895d92d&chksm=cf618496f8160d80727a9802dbba27321c11851f537702c13ddc4952881e9910f8a5083f816b&mpshare=1&scene=1&srcid=0727iAJAY5mw7scjTdQTdc1M&sharer_sharetime=1690457263669&sharer_shareid=61cc4739dc9090c0f86ae78b538977a9#rd -->
