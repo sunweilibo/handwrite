@@ -1,0 +1,17 @@
+[tools]
+python = "3.12.13"
+
+[env]
+UV_CACHE_DIR = ".uv-cache"
+
+[tasks.install]
+description = "Install the Python version managed by mise"
+run = "mise install"
+
+[tasks.sync]
+description = "Create the virtual environment and install dependencies"
+run = "uv sync"
+
+[tasks.test]
+description = "Run the Python test suite"
+run = "uv run pytest"

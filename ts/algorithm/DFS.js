@@ -1,13 +1,14 @@
-function DFS(node, nodeList = []) {
+export function DFS(node, nodeList = []) {
   if (!node) return nodeList;
   nodeList.push(node)
   const children = node.children || []
   for(let i=0; i<children.length; i++) {
     DFS(node.children[i], nodeList)
   }
+  return nodeList
 }
 
-function DFS1(node) {
+export function DFS1(node) {
   if (!node) return []
   const stacks = []
   const nodes = []
@@ -16,12 +17,12 @@ function DFS1(node) {
     const lastNode = stacks.pop()
     nodes.push(lastNode)
     let children = lastNode.children || []
-    stacks.push.apply(stacks, children.reverse())
+    stacks.push.apply(stacks, [...children].reverse())
   }
   return nodes
 }
 
-function BFS(node) {
+export function BFS(node) {
   if (!node) return []
   const nodes = []
   const stacks = []
@@ -35,46 +36,7 @@ function BFS(node) {
   return nodes
 }
 
-// obj
-let obj = {
-  index: 0,
-  children: [
-    { 
-      index: 1, 
-      children: [
-        { 
-          index: 2, 
-          children: [
-            { 
-              index: 3 
-            }
-          ] 
-        }
-      ] 
-    }, 
-    { 
-      index: 4 
-    }, 
-    { 
-      index: 5, 
-      children: [
-        { 
-          index: 7, 
-          children: [
-            { 
-              index: 8 
-            }
-          ] 
-        }
-      ] 
-    }, 
-    { 
-      index: 6 
-    }
-  ] 
-}
-
-function DFSS(node) {
+export function DFSS(node) {
   if (!node) return []
   const r = []
   const stacks = []
@@ -87,6 +49,3 @@ function DFSS(node) {
   }
   return r
 }
-
-const c = DFSS(obj)
-console.log("c:", c);

@@ -2,7 +2,7 @@ const PENDING = 'pending'
 const FULFILLED = 'fulfilled'
 const REJECTED = 'rejected'
 
-function VPromise(executor) {
+export function VPromise(executor) {
   this.status = PENDING
   this.value = undefined
   this.reason = undefined

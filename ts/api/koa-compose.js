@@ -1,5 +1,5 @@
 // https://github.com/koajs/compose/blob/master/index.js
-function compose(middlewares) {
+export function compose(middlewares) {
   if (!Array.isArray(middlewares)) {
     throw new TypeError('middlewares must be an array')
   }
@@ -24,7 +24,7 @@ function compose(middlewares) {
         fn = next
       }
       if (!fn) {
-        return Promise.resoleve()
+        return Promise.resolve()
       }
       try{
         return Promise.resolve(fn(context, dispatch.bind(null, i+1)))
@@ -33,23 +33,4 @@ function compose(middlewares) {
       }
     }
   }
-}
-
-// 旧版 redux 实现方式
-// 同步
-app.compose = function() {
-  return app.middlewares.reduceRight((r, fn) => () => fn(r), () => {})
-}
-app.compose = function() {
-  return Promise.resolve(
-      app.middlewares.reduceRight(
-          (a, b) => () => Promise.resolve(b(a)),
-          () => Promise.resolve();
-      )()
-  );
-};
-
-//新版 redux
-app.compose = function() {
-  return app.middlewares.reduceRight((r, fn) => (arg) => r(() => fn(arg)))(() => {})
 }
